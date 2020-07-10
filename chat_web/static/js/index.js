@@ -122,7 +122,7 @@ function show_message(json_string) {
         pKeys.forEach(function (k) {
             pubKeysMap[k.uid] = k.p_key
         })
-
+        FRIEND_IDS.splice(0, FRIEND_IDS.length)
         initFriends(data.people, data.time, data.people_num)
         // pushMsg(data.history)
         // } else if (type === 'history') {
@@ -390,10 +390,21 @@ function initFriends(people, time, num) {
         })
         html += '</ul>' + '</li>'
     })
-
-    $('#online').html(html)
-    $('#online_chat').html(chat)
-    allReady()
+    if (onlineUserHtml !== '') {
+        onlineUserHtml = html
+        onlineChatHtml = chat
+    } else {
+        $('#online').html(html)
+        $('#online_chat').html(chat)
+        document.querySelector('.container .right .top .name').innerHTML = "大厅"
+        document.getElementById("add-or-del").setAttribute("visibility", "hidden")
+        document.getElementById("friend-label-div").setAttribute("visibility", "hidden")
+        document.getElementById("friend-label-span").style.display = "none"
+        document.getElementById("friend-label-input").style.display = "none"
+        document.getElementById("add-friend").style.display = "none"
+        document.getElementById("del-friend").style.display = "none"
+        allReady()
+    }
 }
 
 function showSearchResult(results) {
@@ -441,6 +452,7 @@ function showSearchResult(results) {
     phtml += '</ul>' + '</li>'
     $('#online').html(phtml)
     $('#online_chat').html(chat)
+
     allReady()
 }
 
@@ -647,6 +659,11 @@ $(".del-friend").bind("click", function () {
             }
         });
         xhr.send(form); //开始发送
+        FRIEND_IDS.forEach((item, index, FRIEND_IDS) => {
+            if (item === del_uid) {
+                FRIEND_IDS.splice(index, 1)
+            }
+        });
     }
 })
 

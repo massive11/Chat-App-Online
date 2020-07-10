@@ -54,9 +54,9 @@ def register():
     name = request.form.get('name')
     pwd = request.form.get('password')
     repwd = request.form.get('re_password')
-    if repwd != pwd:
-        err_msg = "{}".format("密码不一致")
-        return render_template("error.html", **locals())
+    # if repwd != pwd:
+    #     err_msg = "{}".format("密码不一致")
+    #     return render_template("error.html", **locals())
     if name is not None:
         avatars = ['/img/dog.png', '/img/louis-ck.jpeg', '/img/michael-jordan.jpg', '/img/bo-jackson.jpg']
         avatar = random.choice(avatars)

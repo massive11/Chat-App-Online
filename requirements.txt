@@ -1,0 +1,5 @@
+flask
+gevent
+flask_sockets
+gevent-websocket
+pyMongo 

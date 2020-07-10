@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>login</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <link href="/css/fonts.css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="/css/reset.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/iconfont.css"/>
+</head>
+<body>
+<div id="bigBox">
+    <h1>LOGIN</h1>
+    <form action="{{ url_for('login') }}" method="post">
+        <div class="inputBox">
+            <div class="inputText">
+                <span class="iconfont icon-nickname"></span>
+                <input type="text" id="nick-name" name="name" placeholder="Username"/>
+            </div>
+            <div class="inputText">
+                <span class="iconfont icon-visible"></span>
+                <input type="password" id="password" name="password" placeholder="Password" onkeyup="validate()"/><span
+                    id="tishi" style='font-size:10px;'></span>
+            </div>
+        </div>
+        <input class="loginButton" id="button-login" type="submit" value="Login"/>
+    </form>
+    <div id="jump_to">
+        <a href="register" style="color: white">Sign up</a>
+    </div>
+</div>
+<script>
+    function validate() {
+        let pw1 = document.getElementById("password").value;
+        if (pw1 === '') {
+            document.getElementById("tishi").innerHTML = "<font color='red'>请输入密码</font>";
+            $("#re_password").css('color', 'red');
+            document.getElementById("button-login").disabled = true;
+        } else {
+            document.getElementById("tishi").innerHTML = "";
+            $("#re_password").css('color', '');
+            document.getElementById("button-login").disabled = false;
+        }
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+
+</body>
+</html>

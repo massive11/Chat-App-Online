@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>聊天室</title>
+    {#    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">#}
+    <link href="/css/fonts.css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="/css/reset.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="container">
+        <div class="left">
+            <div class="top">
+                <img src="{{ avatar }}" alt="" class="avatar" id="user_avatar"/>
+                <input type="hidden" value="{{ username }}" id="username">
+                <input type="hidden" value="{{ uid }}" id="uid">
+                <span id="name">{{ name }}</span><a href="login" class="exit_img"></a>
+                <div class="state">
+                    <span class="status online"></span>Online
+                </div>
+                <div class="site-search">
+                    <div id="search">
+                        <input type="text" class="search-text" id="search-text" placeholder="输入好友ID或名称"/>
+                        <button type="button" class="do-search">搜索</button>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="people" id="online">
+                <li class="labels" hidden>
+                    <span class="label-name" id="label-name1" hidden>
+                        我的好友
+                    </span>
+                    <ul class="label" id="label1">
+                        <li class="person" data-chat="chat_group" data-msg="0">
+                            <img src="/img/group.jpg" alt=""/>
+                            <span class="name">大厅</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview pp_status">当前在线<b id="people">0</b>人</span>
+                            <span class="preview new_blink" style="display: none;">你有新的消息</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="labels" hidden>
+                    <span class="label-name" id="label-name1" hidden>
+                        我的好友
+                    </span>
+                    <ul class="label" id="label1" hidden>
+                        <li class="person" data-chat="person1" hidden>
+                            <img src="/img/thomas.jpg" alt=""/>
+                            <span class="name">Thomas Bangalter</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">I was wondering...</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="top">
+                <span>To:
+                    <span class="name" id="toUsername">大厅</span>
+                    <input type="hidden" id="toUser" value="Group" class="username">
+                    <input type="hidden" id="toUserID" value="0" class="uid">
+                </span>
+                <div class="top-right">
+                    <div class="friend" id="friend-label-div" >
+                        <span id="friend-label-span" style="display: none">标签:</span><input type="text" class="friend-label" id="friend-label-input"  style="display: none">
+                    </div>
+                    <div class="add-or-del" id="add-or-del">
+                        <button type="button" style="display: none" class="add-friend" id="add-friend">添加好友</button>
+                        <button type="button" style="display: none" class="del-friend" id="del-friend">删除好友</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="online_chat">
+                <div class="chat active-chat" id="content_form" data-chat="chat_group">
+                    <div class="conversation-start">
+                        <span>Today, 6:48 AM</span>
+                    </div>
+                    <div class="group_you">
+                        <img src="/img/thomas.jpg" alt="" class="avatar"/>
+                        <div class="you_name">fea</div>
+                        <div class="bubble you_msg">
+                            Hello,world!
+                        </div>
+                    </div>
+                    <div class="bubble me">
+                        Why aren't you answering?
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="write">
+                <input type="file" id="upload_file" class="select-file" style="display:none">
+                <a class="write-link attach"></a>
+                <input type="text" id="text" placeholder="请输入聊天内容"/>
+                <a href="javascript:void(0);" class="write-link send" id="button-send"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.cookie.js"></script>
+<script src="/js/jsencrypt.min.js"></script>
+<script src="https://unpkg.com/crypto-js@4.0.0/crypto-js.js"></script>
+<script src="http://travistidwell.com/jsencrypt/bin/jsencrypt.js"></script>
+<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>
